@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head">
+</head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <h1 th:text="${title}"></h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Category</th>
+            <th sec:authorize access="hasRole('USER')" scope="col">Edit</th>
+            <th sec:authorize access="hasRole('USER')" scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book: ${books}">
+            <th scope="row" th:text="${book.id}"></th>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.category}"></td>
+            <td sec:authorize access="hasRole('USER')">
+                <a class="btn btn-success btn-sm" th:href="'/books/edit/'+${book.id}">Edit</a>
+            </td>
+            <td sec:authorize access="hasRole('USER')">
+                <a id="delete-btn" class="btn btn-danger" th:href="'/books/delete/'+${book.id}">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <footer th:replace="fragments/footer"></footer>
+</section>
+
+</body>
+
