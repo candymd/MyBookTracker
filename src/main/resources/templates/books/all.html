@@ -10,7 +10,7 @@
     <div class="card-container">
     <div class="cardClass" th:each="book: ${books}">
         <div class="img">
-        <img th:alt="${title} + 'cover image'" th:src="${'https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg'}" class="card-image"/>
+        <img th:alt="${title} + 'cover image'" th:src="${book.imageURL}" class="card-image"/>
         </div>
 
         <div class="card-body">
@@ -18,15 +18,29 @@
                 <span class="card-title" th:text="${book.title}"></span>
                 <span th:text="${book.author}"></span>
                 <span th:text="${book.category}"></span>
+                <span class="date" th:text="'Started on ' + ${book.startingDate}"></span>
+                <span class="date" th:text="'Finished on ' + ${book.finishDate}"></span>
 
-                <textarea name="bookReview" rows="4" cols="50">Leave a review!
-                </textarea>
-
+                <div class="rating">
+                    <form >
+                        <fieldset>
+                             <span class="star-cb-group">
+                                 <input type="radio" id="rating-5" name="rating" value="5"/><label for="rating-5">5</label>
+                                 <input type="radio" id="rating-4" name="rating" value="4" checked="checked"/><label for="rating-4">4</label>
+                                 <input type="radio" id="rating-3" name="rating" value="3"/><label for="rating-3">3</label>
+                                 <input type="radio" id="rating-2" name="rating" value="2"/><label for="rating-2">2</label>
+                                 <input type="radio" id="rating-1" name="rating" value="1"/><label for="rating-1">1</label>
+                                 <input type="radio" id="rating-0" name="rating" :value="0" class="star-cb-clear"/><label for="rating-0">0</label>
+                             </span>
+                        </fieldset>
+                    </form>
+                </div>
+                <span th:text="${book.review}"></span>
                 <div class="edit-btn">
-                <a sec:authorize="isAuthenticated()" th:href="'/books/edit/'+${book.id}" >
+                <a class="create" sec:authorize="isAuthenticated()" th:href="'/books/edit/'+${book.id}" >
                     <button class="edit-book">Edit</button>
                 </a>
-                <a sec:authorize="isAuthenticated()" th:href="'/books/delete/'+${book.id}" >
+                <a class="delete" sec:authorize="isAuthenticated()" th:href="'/books/delete/'+${book.id}" >
                     <button class="delete-book">Delete</button>
                 </a>
                 </div>

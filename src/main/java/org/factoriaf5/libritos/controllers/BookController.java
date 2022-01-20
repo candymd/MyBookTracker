@@ -25,7 +25,7 @@ public class BookController {
     @GetMapping("/books")
     String listBooks(Model model) {
         List<Book> books = (List<Book>) bookRepository.findAll();
-        model.addAttribute("title", "Book list");
+        model.addAttribute("title", "My books");
         model.addAttribute("books", books);
         return "books/all";
     }

@@ -1,7 +1,7 @@
 <header xmlns:sec="http://www.w3.org/1999/xhtml">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Libritos</a>
+            <a class="navbar-brand" href="/">MyBookTracker</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -18,7 +18,7 @@
                         <input sec:authorize="isAnonymous()" class="btn btn-primary" type="submit" value="Log in"/>
                     </a>
                         <form  th:action="@{/logout}" method="post">
-                        <input sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" value="Sign Out"/>
+                        <input sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" value="Log Out"/>
                     </form>
             </div>
         </div>

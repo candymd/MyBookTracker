@@ -45,7 +45,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     @Test @WithMockUser
     void returnsTheExistingBooks() throws Exception {
 
-        Book book = bookRepository.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "fantasy"));
+        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "", true));
 
         mockMvc.perform(get("/books"))
                 .andExpect(status().isOk())
@@ -92,7 +92,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
     @Test @WithMockUser
     void returnsAFormToEditBooks() throws Exception {
-        Book book = bookRepository.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "fantasy"));
+        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", true));
         mockMvc.perform(get("/books/edit/" + book.getId()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("books/edit"))
@@ -103,7 +103,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     @Test
     @WithMockUser
     void allowsToDeleteABook() throws Exception {
-        Book book = bookRepository.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "fantasy"));
+        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "",true));
         mockMvc.perform(get("/books/delete/" + book.getId()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/books"));

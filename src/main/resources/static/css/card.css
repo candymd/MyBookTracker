@@ -1,3 +1,7 @@
+nav {
+    background-color: #FBB202;
+}
+
 .container {
     margin: 0 auto;
 
@@ -13,68 +17,74 @@
 }
 
 .cardClass {
-margin: 0 auto 4rem;
-background-color: rgb(247, 247, 247);
-max-width: 100%;
-width: 32rem;
-height: 400px;
-display: flex;
+    margin: 0 auto 4rem;
+    background-color: rgb(247, 247, 247);
+    max-width: 100%;
+    width: 32rem;
+    height: 400px;
+    display: flex;
 }
 
 .img {
-width: 250px;
-height: 400px;
+    width: 250px;
+    height: 400px;
 }
 
-.card-image{
-max-width: 100%;
-object-fit: cover;
-text-align: center;
+.card-image {
+    max-width: 100%;
+    object-fit: cover;
+    text-align: center;
 }
 
 .card-title {
-font-weight: 900;
+    font-weight: 900;
 }
+
+.date {
+    font-size: 14px;
+    text-align: center;
+}
+
 .card-text-body {
-display: flex;
-flex-direction: column;
-min-width: 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
 .card-body {
-font-weight: 400;
-position: relative;
+    font-weight: 400;
+    position: relative;
 }
 
 textarea {
-width: 220px;
-align-self: center;
+    width: 220px;
+    align-self: center;
 }
 
 .edit-btn {
-position: absolute;
-width: 80%;
-bottom: 20px;
-left: 50%;
-margin: 0 0 0 -40%;
+    position: absolute;
+    width: 80%;
+    bottom: 20px;
+    left: 50%;
+    margin: 0 0 0 -40%;
 
 }
 
 .edit-book, .delete-book {
-width: 100%;
-margin-top: 1rem;
-text-align: center!important;
-color: black;
-background-color: goldenrod;
-border-color: black;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center !important;
+    color: black;
+    background-color: goldenrod;
+    border-color: black;
 }
 
-.edit-book:hover, .delete-book:hover {
-color: black;
-background-color: goldenrod;
-border-color: black;
+button.edit-book:hover, button.delete-book:hover {
+    color: black;
+    background-color: #cca838;
+    border-color: black;
 }
 
 a {
-text-decoration: none!important;
+    text-decoration: none !important;
 }
