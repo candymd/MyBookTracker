@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -30,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         bookRepository.deleteAll();
       }
 
-        @Test
+        @Test @WithMockUser
         void loadsTheHomePage() throws Exception {
             mockMvc.perform(get("/"))
                     .andExpect(status().isOk())
@@ -40,7 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     @Autowired
     BookRepository bookRepository;
 
-    @Test
+    @Test @WithMockUser
     void returnsTheExistingBooks() throws Exception {
 
         Book book = bookRepository.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "fantasy"));
@@ -51,7 +53,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 .andExpect(model().attribute("books", hasItem(book)));
     }
 
-    @Test
+    @Test @WithMockUser
     void returnsFormToAddNewBook () throws Exception {
         mockMvc.perform(get("/books/new"))
                 .andExpect(status().isOk())
@@ -59,12 +61,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     }
 
 
-    @Test
+    @Test @WithMockUser
     void AllowsToCreateNewBook () throws Exception {
         mockMvc.perform(post("/books/new")
                 .param("title", "Harry Potter and the Philosopher's Stone")
                 .param("author", "J.K. Rowling")
                 .param("category", "fantasy")
+                        .with(csrf())
 		    )
 
         .andExpect(status().is3xxRedirection())
@@ -78,7 +81,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         )));
     }
 
-    @Test
+    @Test @WithMockUser
     void returnsAFormToAddNewBooks() throws Exception {
         mockMvc.perform(get("/books/new"))
                 .andExpect(status().isOk())
@@ -87,7 +90,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 .andExpect(model().attribute("title", "Create new book"));
     }
 
-    @Test
+    @Test @WithMockUser
     void returnsAFormToEditBooks() throws Exception {
         Book book = bookRepository.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "fantasy"));
         mockMvc.perform(get("/books/edit/" + book.getId()))
@@ -98,6 +101,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     }
 
     @Test
+    @WithMockUser
     void allowsToDeleteABook() throws Exception {
         Book book = bookRepository.save(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "fantasy"));
         mockMvc.perform(get("/books/delete/" + book.getId()))

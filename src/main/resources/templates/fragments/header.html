@@ -15,10 +15,10 @@
                     </li>
                 </ul>
                     <a href="/login">
-                        <input class="btn btn-primary" type="submit" value="Log in"/>
+                        <input sec:authorize="isAnonymous()" class="btn btn-primary" type="submit" value="Log in"/>
                     </a>
                         <form  th:action="@{/logout}" method="post">
-                        <input sec:authorize access="hasRole('USER')" class="btn btn-primary" type="submit" value="Sign Out"/>
+                        <input sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" value="Sign Out"/>
                     </form>
             </div>
         </div>

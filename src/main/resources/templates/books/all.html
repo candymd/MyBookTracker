@@ -6,33 +6,34 @@
 <header th:replace="fragments/header"></header>
 <section class="container">
     <h1 th:text="${title}"></h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Category</th>
-            <th sec:authorize access="hasRole('USER')" scope="col">Edit</th>
-            <th sec:authorize access="hasRole('USER')" scope="col">Delete</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="book: ${books}">
-            <th scope="row" th:text="${book.id}"></th>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.category}"></td>
-            <td sec:authorize access="hasRole('USER')">
-                <a class="btn btn-success btn-sm" th:href="'/books/edit/'+${book.id}">Edit</a>
-            </td>
-            <td sec:authorize access="hasRole('USER')">
-                <a id="delete-btn" class="btn btn-danger" th:href="'/books/delete/'+${book.id}">Delete</a>
-            </td>
+    <div class="cardClass" th:each="book: ${books}">
+        <div class="img">
+        <img th:alt="${title} + 'cover image'" th:src="${'https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg'}" class="card-image"/>
+        </div>
 
-        </tr>
-        </tbody>
-    </table>
+        <div class="card-body">
+            <div class="card-text-body">
+                <span class="card-title" th:text="${book.title}"></span>
+                <span th:text="${book.author}"></span>
+                <span th:text="${book.category}"></span>
+
+                <textarea name="bookReview" rows="4" cols="50">Leave a review!
+                </textarea>
+
+                <div class="edit-btn">
+                <a sec:authorize="isAuthenticated()" th:href="'/books/edit/'+${book.id}" >
+                    <button class="edit-book">Edit</button>
+                </a>
+                <a sec:authorize="isAuthenticated()" th:href="'/books/delete/'+${book.id}" >
+                    <button class="delete-book">Delete</button>
+                </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <footer th:replace="fragments/footer"></footer>
 </section>
 
