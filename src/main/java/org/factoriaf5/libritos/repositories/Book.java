@@ -15,15 +15,6 @@ public class Book implements Serializable {
     private String author;
     private String category;
     private String imageURL;
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     private int rating;
     private String startingDate;
     private String finishDate;
@@ -117,6 +108,14 @@ public class Book implements Serializable {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     @Override
