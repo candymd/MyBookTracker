@@ -1,11 +1,12 @@
+/*
 @charset "UTF-8";
 .star-cb-group {
-  /* remove inline-block whitespace */
+  !* remove inline-block whitespace *!
   font-size: 0;
-  /* flip the order so we can use the + and ~ combinators */
+  !* flip the order so we can use the + and ~ combinators *!
   unicode-bidi: bidi-override;
   direction: rtl;
-  /* the hidden clearer */
+  !* the hidden clearer *!
 }
 .star-cb-group * {
   font-size: 1.5rem;
@@ -15,7 +16,7 @@
   display: none;
 }
 .star-cb-group > input + label {
-  /* only enough room for the star */
+  !* only enough room for the star *!
   display: inline-block;
   overflow: hidden;
   text-indent: 9999px;
@@ -64,3 +65,4 @@ fieldset {
   text-align: center;
   background: transparent;
 }
+*/

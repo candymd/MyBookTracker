@@ -1,8 +1,8 @@
 package org.factoriaf5.libritos.controllers;
 
-import net.bytebuddy.TypeCache;
 import org.factoriaf5.libritos.repositories.Book;
 import org.factoriaf5.libritos.repositories.BookRepository;
+import org.factoriaf5.libritos.repositories.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class BookController {
@@ -56,6 +55,13 @@ public class BookController {
     String remove(@PathVariable Long id) {
         bookRepository.deleteById(id);
         return "redirect:/books";
+    }
+
+    @PutMapping("/books/{id}/rating")
+    public Book addRating(@RequestBody Rating rating, @PathVariable Long id) {
+        Book book = bookRepository.findById(id).orElse(null);
+        book.setRating(rating.getScore());
+        return bookRepository.save(book);
     }
 
 }

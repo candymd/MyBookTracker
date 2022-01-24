@@ -42,6 +42,20 @@
             <input th:field="*{review}" type="text" class="col-md6 form-control form-control-md" id="review"
                    placeholder="Write a review!">
         </div>
+        <div class="form-group">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
+                Rating
+            </label>
+            <select th:field="*{rating}" id="rating" class="col-md6 form-control form-control-xs">
+                <option th:value="${book.rating}"></option>
+                <option th:value="1">1</option>
+                <option th:value="2">2</option>
+                <option th:value="3">3</option>
+                <option th:value="4">4</option>
+                <option th:value="5">5</option>
+
+            </select>
+        </div>
 
         <div class="card-footer ">
             <input type="submit" class="btn btn-primary btn-sm" value="Save"/>

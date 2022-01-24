@@ -33,7 +33,7 @@ class BookTest {
         assertThat(book.getImageURL(), equalTo("https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg"));
     }
 
-/*     @Test
+     @Test
     void getRatingReturnsNumbersOnlyBetweenZeroAndFive() {
         Book book1 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",-1, "March-2021", "May-2021","", true);
         Book book2 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",8, "March-2021", "May-2021","", true);
@@ -43,7 +43,7 @@ class BookTest {
         assertThat(book2.getRating(), equalTo(5));
         assertThat(book3.getRating(), equalTo(3));
         assertThat(book4.getRating(), equalTo(0));
-    }*/
+    }
 
       @Test
     void bookHasStartingDateAndFinishDate() {
