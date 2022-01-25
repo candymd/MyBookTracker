@@ -16,15 +16,17 @@
         <div class="card-body">
             <div class="card-text-body">
                 <span class="card-title" th:text="${book.title}"></span>
-                <span th:text="${book.author}"></span>
+                <span th:text="${'By ' + book.author}"></span>
                 <span th:text="${book.category}"></span>
                 <span class="date" th:text="'Started on ' + ${book.startingDate}"></span>
                 <span class="date" th:text="'Finished on ' + ${book.finishDate}"></span>
-
-                <div class="rating">
-                             <span th:text="${book.rating} + '/5'" class="star-cb-group"></span>
+                <div class="star-rating">
+                   <span th:class="star">star</span>
+                    <span class="rating" th:text="${book.rating} + '/5'"></span>
                 </div>
-                <span th:text="${book.review}"></span>
+                <br>
+                <b><span>Review: </span></b>
+                <span th:class="review" th:text="${book.review}"></span>
                 <div class="edit-btn">
                 <a class="create" sec:authorize="isAuthenticated()" th:href="'/books/edit/'+${book.id}" >
                     <button class="edit-book">Edit</button>

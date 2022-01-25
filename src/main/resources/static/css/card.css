@@ -7,6 +7,11 @@ nav {
 
 }
 
+h1 {
+    margin: 8px;
+    margin-bottom: 8px;
+}
+
 .card-container {
     display: grid;
     grid-template-columns: max-content max-content;
@@ -14,9 +19,12 @@ nav {
     gap: 0 3em;
     grid-template-areas:
     ". .";
+    justify-content: center;
 }
 
 .cardClass {
+    box-shadow: 0 0 16px 5px rgba(0,0,0,0.17);
+    border-radius: 10px;
     margin: 0 auto 4rem;
     background-color: rgb(247, 247, 247);
     max-width: 100%;
@@ -26,14 +34,21 @@ nav {
 }
 
 .img {
+    display: flex;
     width: 250px;
     height: 400px;
+    box-shadow: 0 0 16px 5px rgb(0 0 0 / 17%);
+    align-items: center;
+    background-color: transparent;
+    border-radius: 6px;
+
 }
 
 .card-image {
     max-width: 100%;
     object-fit: cover;
     text-align: center;
+
 }
 
 .card-title {
@@ -42,9 +57,17 @@ nav {
 
 .date {
     font-size: 14px;
-    text-align: center;
 }
-
+.review {
+    width: 100%;
+    height: 70px;
+    padding-left: 8px;
+    background-color: #f1f1a5;
+    max-width: 230px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow: hidden;
+}
 .card-text-body {
     display: flex;
     flex-direction: column;
@@ -56,10 +79,6 @@ nav {
     position: relative;
 }
 
-textarea {
-    width: 220px;
-    align-self: center;
-}
 
 .edit-btn {
     position: absolute;
@@ -77,6 +96,7 @@ textarea {
     color: black;
     background-color: goldenrod;
     border-color: black;
+    border-radius: 20px;
 }
 
 button.edit-book:hover, button.delete-book:hover {
