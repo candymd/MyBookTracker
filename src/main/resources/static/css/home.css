@@ -1,0 +1,21 @@
+.filters {
+    display: flex;
+    justify-content: space-around;
+}
+
+.filters > button {
+    font-weight: 500;
+    width: 160px;
+    margin-top: 2rem;
+    text-align: center !important;
+    color: black;
+    background-color: goldenrod;
+    border-radius: 20px;
+    border: 1px darkgoldenrod solid;
+    box-shadow: 0 0 11px 4px rgb(0 0 0 / 14%);
+}
+
+.filters > button:hover, .filters > button:active {
+    background-color: #ecb60f;
+    transform: scale(1.2);
+}
