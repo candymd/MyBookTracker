@@ -111,7 +111,14 @@ public class Book implements Serializable {
     }
 
     public int getRating() {
-        return rating;
+      if (rating <= 5 && rating >= 0) {
+          return rating;
+      }
+      else if (rating < 0) {
+          return 0;
+        }
+
+        else return 5;
     }
 
     public void setRating(int rating) {

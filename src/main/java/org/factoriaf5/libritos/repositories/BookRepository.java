@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends CrudRepository <Book, Long > {
-    List<Book> findByRating(Integer rating);
     @Query("select s from Book s")
     List<Book> findAllByFinished(Sort finished);
 }
