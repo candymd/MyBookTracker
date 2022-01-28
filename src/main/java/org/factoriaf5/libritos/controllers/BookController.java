@@ -21,7 +21,7 @@ public class BookController {
         this.bookRepository = bookRepository;
     }
 
-    @GetMapping("/books")
+    @GetMapping("/")
     String listBooks(Model model, @RequestParam(required = false) boolean finished) {
         List<Book> books = bookRepository.findAllByFinished((Sort.by(Sort.Direction.DESC, "finished")).and(Sort.by("id")));
         model.addAttribute("title", "My books");
