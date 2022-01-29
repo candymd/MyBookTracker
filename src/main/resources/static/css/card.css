@@ -84,7 +84,8 @@ h1 {
 }
 
 .star {
-    color: transparent;
+
+    color: #DDB427;
     background-color: #DDB427;
     clip-path: polygon( 50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35% );
 }
@@ -92,6 +93,7 @@ h1 {
 span.rating {
     font-size: 16px;
     font-weight: 800;
+
 }
 
 .review-and-rating {
