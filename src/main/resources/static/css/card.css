@@ -122,7 +122,7 @@ span.rating {
 
 }
 
-.edit-book, .delete-book {
+.edit-book, .delete-book{
     width: 100%;
     margin-top: 1rem;
     text-align: center !important;

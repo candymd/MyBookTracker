@@ -5,67 +5,78 @@
 <header th:replace="fragments/header"></header>
 <section class="container">
     <h1 th:text="${title}"></h1>
-    <form th:action="@{/books/new}" th:object="${book}" method="post">
+    <form class="edit" th:action="@{/books/new}" th:object="${book}" method="post">
         <div class="form-group">
-            <input type="hidden" th:field="*{id}">
-            <label class="col-md2" for="title">Title</label>
-            <input required th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
-                   placeholder="Enter title">
-        </div>
-        <div class="form-group">
-            <label class="col-md2" for="author">Author</label>
-            <input required th:field="*{author}" type="text" class="col-md6 form-control form-control-sm" id="author"
-                   placeholder="Enter author">
-        </div>
-        <div class="form-group">
-            <label class="col-md2" for="category">Category</label>
-            <input required th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category"
-                   placeholder="Enter category">
+            <div>
+                <input type="hidden" th:field="*{id}">
+                <label class="col-md2" for="title">Title</label><br>
+                <input required th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                       placeholder="Enter title">
+            </div>
+            <div>
+                <label class="col-md2" for="author">Author</label><br>
+                <input required th:field="*{author}" type="text" class="col-md6 form-control form-control-sm" id="author"
+                       placeholder="Enter author">
+            </div>
         </div>
         <div class="form-group">
-            <label class="col-md2" for="category">Image</label>
-            <input th:field="*{imageURL}" maxlength="250" type="text" class="col-md6 form-control form-control-sm" id="image"
-                   placeholder="Enter image link">
-        </div>
-        <div class="form-group">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
-                Have you read it yet?
-            </label>
-            <select  required name='finished' class="col-md6 form-control form-control-xs" onchange="showDateInputIfBookIsFinished(this)" >
-                <option th:text="${book.isFinished() ? 'Read' : 'Reading'}" selected hidden disabled></option>
-                <option  th:value='1'>Read</option>
-                <option  th:value='0'>Reading</option>
-            </select>
-        </div>
-        <div class="form-group isTrue">
-            <label class="col-md2" for="category">Starting date</label>
-            <input th:field="*{startingDate}" type="date" class="col-md6 form-control form-control-sm" id="startingDate"
-                   placeholder="Enter starting date">
-        </div>
-        <div class="form-group isTrue">
-            <label class="col-md2" for="category">Finish date</label>
-            <input th:field="*{finishDate}" type="date" class="col-md6 form-control form-control-sm" id="finishinDate"
-                   placeholder="Enter finish date">
-        </div>
-        <div class="form-group">
-            <label class="col-md2" for="category">Review</label>
-            <input th:field="*{review}" type="text" maxlength="100"  class="col-md6 form-control form-control-md" id="review"
-                   placeholder="Write a review!">
+            <div>
+                <label class="col-md2" for="category">Category</label>
+                <input required th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category"
+                       placeholder="Enter category">
+            </div>
+            <div>
+                <label class="col-md2" for="image">Image</label>
+                <input th:field="*{imageURL}" maxlength="250" type="text" class="col-md6 form-control form-control-sm" id="image"
+                       placeholder="Enter image link">
+            </div>
         </div>
 
-        <div class="form-group isTrue">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
-                Rating
-            </label>
-            <select th:field="*{rating}" id="rating" class="col-md6 form-control form-control-xs">
-                <option hidden th:value="${book.rating}"></option>
-                <option th:value="1">⭐</option>
-                <option th:value="2">⭐⭐</option>
-                <option th:value="3">⭐⭐⭐</option>
-                <option th:value="4">⭐⭐⭐⭐</option>
-                <option th:value="5">⭐⭐⭐⭐⭐</option>
+        <div class="form-group">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="finished">
+                    Have you read it yet?
+                </label><br>
+                <select  required name='finished' class="col-md6 form-control form-control-xs" onchange="showDateInputIfBookIsFinished(this)" >
+                    <option th:text="${book.isFinished() ? 'Read' : 'Reading'}" selected hidden disabled></option>
+                    <option  th:value='1'>Read</option>
+                    <option  th:value='0'>Reading</option>
+                </select>
+            </div>
 
-            </select>
+        </div>
+        <div class="form-group isTrue">
+            <div>
+                <label class="col-md2" for="startingDate">Starting date</label><br>
+                <input th:field="*{startingDate}" type="date" class="col-md6 form-control form-control-sm" id="startingDate"
+                       placeholder="Enter starting date">
+            </div>
+          <div>
+              <label class="col-md2" for="finishinDate">Finish date</label><br>
+              <input th:field="*{finishDate}" type="date" class="col-md6 form-control form-control-sm" id="finishinDate"
+                     placeholder="Enter finish date">
+          </div>
+
+        </div>
+       <div class="form-group isTrue">
+            <div>
+                <label class="col-md2" for="review">Review</label><br>
+                <input th:field="*{review}" type="text" maxlength="100"  class="col-md6 form-control form-control-md" id="review"
+                       placeholder="Write a review!">
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
+                    Rating
+                </label><br>
+                <select th:field="*{rating}" id="rating" class="col-md6 form-control form-control-xs">
+                    <option hidden th:value="${book.rating}"></option>
+                    <option th:value="1">⭐</option>
+                    <option th:value="2">⭐⭐</option>
+                    <option th:value="3">⭐⭐⭐</option>
+                    <option th:value="4">⭐⭐⭐⭐</option>
+                    <option th:value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
         </div>
 
         <div class="card-footer ">
@@ -84,5 +95,13 @@
             $(".isTrue").css('display', 'none');
         }
     }
+
+    $('input').keyup(function(event) {
+        if (event.which === 13)
+        {
+            event.preventDefault();
+            $('form').submit();
+        }
+    });
 </script>
 </body>

@@ -20,3 +20,9 @@
     background-color: #ecb60f;
     transform: scale(1.2);
 }
+
+li.nav-item.list-unstyled {
+    background-color: goldenrod;
+    margin-right: 2rem;
+    border: none;
+}

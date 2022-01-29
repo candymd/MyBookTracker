@@ -1,0 +1,50 @@
+form.edit {
+    box-shadow: -1px -1px 34px -1px rgba(0,0,0,0.57);
+    -webkit-box-shadow: -1px -1px 34px -1px rgba(0,0,0,0.57);
+    -moz-box-shadow: -1px -1px 34px -1px rgba(0,0,0,0.57);
+    padding:20px;
+    border-radius: 20px;
+    width: 88%;
+    margin: 2rem auto;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.form-group > * {
+    margin-top: 10px;
+}
+
+input.col-md6 {
+    width: 430px;
+    height: 45px;
+    display: block;
+    margin: 0 auto;
+}
+
+input.btn.btn-primary.btn-sm {
+    display: block;
+    margin: 0 auto;
+    align-self:center;
+    justify-content: center;
+    width: 12%;
+    height: 3rem;
+}
+
+input#review {
+    height:100px;
+}
+
+input#startingDate, input#finishinDate {
+    width:160px;
+}
+
+.card-footer {
+    background-color: none;
+    margin-top: 2rem;
+}
