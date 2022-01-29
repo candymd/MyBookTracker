@@ -9,17 +9,17 @@
         <div class="form-group">
             <input type="hidden" th:field="*{id}">
             <label class="col-md2" for="title">Title</label>
-            <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+            <input required th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
                    placeholder="Enter title">
         </div>
         <div class="form-group">
             <label class="col-md2" for="author">Author</label>
-            <input th:field="*{author}" type="text" class="col-md6 form-control form-control-sm" id="author"
+            <input required th:field="*{author}" type="text" class="col-md6 form-control form-control-sm" id="author"
                    placeholder="Enter author">
         </div>
         <div class="form-group">
             <label class="col-md2" for="category">Category</label>
-            <input th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category"
+            <input required th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category"
                    placeholder="Enter category">
         </div>
         <div class="form-group">
@@ -28,11 +28,21 @@
                    placeholder="Enter image link">
         </div>
         <div class="form-group">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
+                Have you read it yet?
+            </label>
+            <select  required name='finished' class="col-md6 form-control form-control-xs" onchange="showDateInputIfBookIsFinished(this)" >
+                <option th:text="${book.isFinished() ? 'Read' : 'Reading'}" selected hidden disabled></option>
+                <option  th:value='1'>Read</option>
+                <option  th:value='0'>Reading</option>
+            </select>
+        </div>
+        <div class="form-group isTrue">
             <label class="col-md2" for="category">Starting date</label>
             <input th:field="*{startingDate}" type="text" class="col-md6 form-control form-control-sm" id="startingDate"
                    placeholder="Enter starting date">
         </div>
-        <div class="form-group">
+        <div class="form-group isTrue">
             <label class="col-md2" for="category">Finish date</label>
             <input th:field="*{finishDate}" type="text" class="col-md6 form-control form-control-sm" id="finishinDate"
                    placeholder="Enter finish date">
@@ -42,17 +52,18 @@
             <input th:field="*{review}" type="text" maxlength="100"  class="col-md6 form-control form-control-md" id="review"
                    placeholder="Write a review!">
         </div>
-        <div class="form-group">
+
+        <div class="form-group isTrue">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="rating">
                 Rating
             </label>
             <select th:field="*{rating}" id="rating" class="col-md6 form-control form-control-xs">
-                <option th:value="${book.rating}"></option>
-                <option th:value="1">1</option>
-                <option th:value="2">2</option>
-                <option th:value="3">3</option>
-                <option th:value="4">4</option>
-                <option th:value="5">5</option>
+                <option hidden th:value="${book.rating}"></option>
+                <option th:value="1">⭐</option>
+                <option th:value="2">⭐⭐</option>
+                <option th:value="3">⭐⭐⭐</option>
+                <option th:value="4">⭐⭐⭐⭐</option>
+                <option th:value="5">⭐⭐⭐⭐⭐</option>
 
             </select>
         </div>
@@ -63,4 +74,15 @@
     </form>
 </section>
 <footer th:replace="fragments/footer"></footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    function showDateInputIfBookIsFinished(that) {
+        if (that.value === "1") {
+            $(".isTrue").css('display', '');
+        }
+        else {
+            $(".isTrue").css('display', 'none');
+        }
+    }
+</script>
 </body>

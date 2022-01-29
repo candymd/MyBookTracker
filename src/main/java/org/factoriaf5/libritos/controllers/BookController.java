@@ -40,7 +40,7 @@ public class BookController {
     @PostMapping("/books/new")
     String addBook(@ModelAttribute Book book) {
         bookRepository.save(book);
-        return "redirect:/books";
+        return "redirect:/";
     }
 
     @GetMapping("/books/edit/{id}")
@@ -51,17 +51,11 @@ public class BookController {
         return "books/edit";
     }
 
+
     @GetMapping("/books/delete/{id}")
     String remove(@PathVariable Long id) {
         bookRepository.deleteById(id);
-        return "redirect:/books";
-    }
-
-    @PutMapping("/books/{id}/rating")
-    public Book addRating(@RequestBody Rating rating, @PathVariable Long id) {
-        Book book = bookRepository.findById(id).orElse(null);
-        book.setRating(rating.getScore());
-        return bookRepository.save(book);
+        return "redirect:/";
     }
 
 }

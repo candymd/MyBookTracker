@@ -16,8 +16,7 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -36,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         void loadsTheHomePage() throws Exception {
             mockMvc.perform(get("/"))
                     .andExpect(status().isOk())
-                    .andExpect(view().name("home"));
+                    .andExpect(view().name("books/all"));
         }
 
     @Autowired
@@ -47,7 +46,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
         Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "", true));
 
-        mockMvc.perform(get("/books"))
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("books/all"))
                 .andExpect(model().attribute("books", hasItem(book)));
@@ -71,7 +70,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 		    )
 
         .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/books"));
+                .andExpect(redirectedUrl("/"));
 
         List<Book> existingBooks = (List<Book>) bookRepository.findAll();
         assertThat(existingBooks, contains(allOf(
@@ -106,10 +105,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "",true));
         mockMvc.perform(get("/books/delete/" + book.getId()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/books"));
+                .andExpect(redirectedUrl("/"));
 
         assertThat(bookRepository.findById(book.getId()), equalTo(Optional.empty()));
     }
+
 
     }
 
