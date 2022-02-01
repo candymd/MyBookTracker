@@ -45,6 +45,6 @@ input#startingDate, input#finishinDate {
 }
 
 .card-footer {
-    background-color: none;
+    background-color: transparent;
     margin-top: 2rem;
 }

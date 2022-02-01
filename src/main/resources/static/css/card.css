@@ -51,11 +51,13 @@ h1 {
     left: 3%;
     background-color: rgba(218, 165, 32, 0.71);
     border-radius: 20px;
-    width: 104px;
+    width: max-content;
     height: 30px;
     text-align: center;
     font-weight: bold;
-    padding: 2px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-top: 2px;
 }
 
 .card-image {

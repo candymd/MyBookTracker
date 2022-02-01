@@ -11,34 +11,34 @@ class BookTest {
 
     @Test
     void bookHasTittle() {
-        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "",true);
+        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "","Read");
         assertThat(book.getTitle(), equalTo("Una habitación propia"));
     }
 
      @Test
     void bookHasAuthor() {
-        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "",true);
+        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "","Read");
         assertThat(book.getAuthor(), equalTo("Virginia Woolf"));
     }
 
      @Test
     void bookHasCategory() {
-        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "",true);
+        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "","Read");
         assertThat(book.getCategory(), equalTo("Essay"));
     }
 
      @Test
     void bookHasImage() {
-        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", true);
+        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", "Read");
         assertThat(book.getImageURL(), equalTo("https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg"));
     }
 
      @Test
     void getRatingReturnsNumbersOnlyBetweenZeroAndFive() {
-        Book book1 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",-1, "March-2021", "May-2021","", true);
-        Book book2 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",8, "March-2021", "May-2021","", true);
-        Book book3 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",3, "March-2021", "May-2021","", true);
-        Book book4 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",0, "March-2021", "May-2021","", true);
+        Book book1 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",-1, "March-2021", "May-2021","", "Read");
+        Book book2 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",8, "March-2021", "May-2021","", "Read");
+        Book book3 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",3, "March-2021", "May-2021","", "Read");
+        Book book4 = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",0, "March-2021", "May-2021","", "Read");
         assertThat(book1.getRating(), equalTo(0));
         assertThat(book2.getRating(), equalTo(5));
         assertThat(book3.getRating(), equalTo(3));
@@ -47,15 +47,15 @@ class BookTest {
 
       @Test
     void bookHasStartingDateAndFinishDate() {
-        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", true);
+        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", "Read");
         assertThat(book.getStartingDate(), equalTo("March-2021"));
         assertThat(book.getFinishDate(), equalTo("May-2021"));
     }
 
       @Test
-    void checksIfBookIsFinished() {
-        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", true);
-        assertThat(book.isFinished(), equalTo(true));
+    void checksIfBookgetFinished() {
+        Book book = new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", "Read");
+        assertThat(book.getFinished(), equalTo("Read" + " ✔"));
     }
 
 

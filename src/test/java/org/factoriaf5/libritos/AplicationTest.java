@@ -44,7 +44,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     @Test @WithMockUser
     void returnsTheExistingBooks() throws Exception {
 
-        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "", true));
+        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "", "Read"));
 
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -91,7 +91,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
     @Test @WithMockUser
     void returnsAFormToEditBooks() throws Exception {
-        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", true));
+        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021","", "Read"));
         mockMvc.perform(get("/books/edit/" + book.getId()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("books/edit"))
@@ -102,7 +102,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     @Test
     @WithMockUser
     void allowsToDeleteABook() throws Exception {
-        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "",true));
+        Book book = bookRepository.save(new Book("Una habitación propia", "Virginia Woolf", "Essay", "https://images-na.ssl-images-amazon.com/images/I/81ufSJuG9LL.jpg",5, "March-2021", "May-2021", "","Read"));
         mockMvc.perform(get("/books/delete/" + book.getId()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/"));

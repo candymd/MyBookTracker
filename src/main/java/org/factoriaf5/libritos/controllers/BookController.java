@@ -2,7 +2,6 @@ package org.factoriaf5.libritos.controllers;
 
 import org.factoriaf5.libritos.repositories.Book;
 import org.factoriaf5.libritos.repositories.BookRepository;
-import org.factoriaf5.libritos.repositories.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -22,16 +21,25 @@ public class BookController {
     }
 
     @GetMapping("/")
-    String listBooks(Model model, @RequestParam(required = false) boolean finished) {
-        List<Book> books = bookRepository.findAllByFinished((Sort.by(Sort.Direction.DESC, "finished")).and(Sort.by("id")));
-        model.addAttribute("title", "My books");
-        model.addAttribute("books", books);
+    String listBooks(Model model, @RequestParam(required = false) String finished) {
+
+        List<Book> books;
+
+        if (finished != null ) {
+            List<Book> finishedBooks = bookRepository.findAllByFinished(finished);
+            model.addAttribute("books", finishedBooks);
+        }
+        else {
+            books = (List<Book>) bookRepository.findAll();
+            model.addAttribute("books", books);
+        }
+
         return "books/all";
     }
 
-    @GetMapping ("/books/new")
-    String NewBook (Model model) {
-        Book book= new Book();
+    @GetMapping("/books/new")
+    String NewBook(Model model) {
+        Book book = new Book();
         model.addAttribute("book", book);
         model.addAttribute("title", "Create new book");
         return "books/edit";
@@ -44,7 +52,7 @@ public class BookController {
     }
 
     @GetMapping("/books/edit/{id}")
-    String editBook(Model model, @PathVariable Long id){
+    String editBook(Model model, @PathVariable Long id) {
         Book book = bookRepository.findById(id).get();
         model.addAttribute("book", book);
         model.addAttribute("title", "Edit book");

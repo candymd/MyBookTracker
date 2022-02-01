@@ -19,13 +19,13 @@ public class Book implements Serializable {
     private String startingDate;
     private String finishDate;
     private String review;
-    private boolean finished;
+    private String finished;
 
     public Book() {
 
     }
 
-    public Book(String title, String author, String category, String imageURL, int rating, String startingDate, String finishDate, String review, boolean finished) {
+    public Book(String title, String author, String category, String imageURL, int rating, String startingDate, String finishDate, String review, String finished) {
         this.title = title;
         this.author = author;
         this.category = category;
@@ -94,11 +94,18 @@ public class Book implements Serializable {
         this.finishDate = finishDate;
     }
 
-    public boolean isFinished() {
-        return finished;
+    public String getFinished() {
+        if (Objects.equals(finished, "Read")) {
+            return finished + " ✔️";
+        }
+        else if (Objects.equals(finished, "Reading")) {
+            return finished + " 📖";
+        }
+        return finished + "🔖";
     }
 
-    public void setFinished(boolean finished) {
+
+    public void setFinished(String finished) {
         this.finished = finished;
     }
 
