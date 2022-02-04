@@ -48,12 +48,12 @@
         <div class="form-group isTrue">
             <div>
                 <label class="col-md2" for="startingDate">Starting date</label><br>
-                <input th:field="*{startingDate}" type="date" class="col-md6 form-control form-control-sm" id="startingDate"
+                <input th:field="*{startingDate}" type="month" pattern="/(\d{4})-(\d{2})-(\d{2})/gm" class="col-md6 form-control form-control-sm" id="startingDate"
                        placeholder="Enter starting date">
             </div>
           <div>
               <label class="col-md2" for="finishinDate">Finish date</label><br>
-              <input th:field="*{finishDate}" type="date" class="col-md6 form-control form-control-sm" id="finishinDate"
+              <input th:field="*{finishDate}" type="month" class="col-md6 form-control form-control-sm" id="finishinDate"
                      placeholder="Enter finish date">
           </div>
 

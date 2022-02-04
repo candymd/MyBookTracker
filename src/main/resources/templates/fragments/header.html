@@ -1,22 +1,14 @@
 <header xmlns:sec="http://www.w3.org/1999/xhtml">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">MyBookTracker</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <a class="navbar-brand" href="/">
+                <img style="width: 100px; height: 55px;" th:src="@{/assets/logo.png}" alt="logo" src="">
+            </a>
 
-                </ul>
-                <li class="nav-item list-unstyled" >
-                    <a class="btn btn-primary new " href="/books/new">New book</a>
-                </li>
-                    <a href="/login">
-                        <input sec:authorize="isAnonymous()" class="btn btn-primary" type="submit" value="Log in"/>
-                    </a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                        <a sec:authorize="isAuthenticated()" class="h-btn mx-auto" th:href="@{/books/new}">New book</a>
                         <form  th:action="@{/logout}" method="post">
-                        <input sec:authorize="isAuthenticated()" class="btn btn-primary" type="submit" value="Log Out"/>
+                        <input sec:authorize="isAuthenticated()" class="h-btn text-black-500" type="submit" value="Log Out"/>
                     </form>
             </div>
         </div>

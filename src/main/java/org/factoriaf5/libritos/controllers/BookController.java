@@ -53,7 +53,7 @@ public class BookController {
 
     @GetMapping("/books/edit/{id}")
     String editBook(Model model, @PathVariable Long id) {
-        Book book = bookRepository.findById(id).get();
+        Book book = bookRepository.findById(id).orElseThrow(null);
         model.addAttribute("book", book);
         model.addAttribute("title", "Edit book");
         return "books/edit";
@@ -64,6 +64,11 @@ public class BookController {
     String remove(@PathVariable Long id) {
         bookRepository.deleteById(id);
         return "redirect:/";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
     }
 
 }

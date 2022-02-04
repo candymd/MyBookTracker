@@ -26,3 +26,26 @@ li.nav-item.list-unstyled {
     margin-right: 2rem;
     border: none;
 }
+
+.h-btn{
+    padding: 15px;
+    color: black;
+    background-color: goldenrod;
+    border-radius: 35px;
+    border: none;
+}
+
+.h-btn:hover {
+    background-color: darkgoldenrod;
+}
+
+footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FBB202;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: black;
+}
